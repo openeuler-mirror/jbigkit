@@ -1,6 +1,6 @@
 Name:           jbigkit
 Version:        2.1
-Release:        16
+Release:        17
 Summary:        Lossless image compression library
 
 License:        GPLv2+
@@ -13,8 +13,7 @@ Patch1:         jbigkit-2.0-warnings.patch
 Patch2:         jbigkit-ldflags.patch
 
 BuildRequires:  gcc
-Provides:       %{name}-libs
-Obsoletes:      %{name}-libs
+Requires:       %{name}-libs = %{version}-%{release}
 
 %description
 JBIG-KIT provides a portable library of compression and decompression
@@ -23,9 +22,16 @@ into your image or document processing software. In addition, JBIG-KIT
 provides ready-to-use compression and decompression programs with a
 simple command line interface.
 
+%package        libs
+Summary:        Libraries for %{name}
+
+%description    libs
+Libraries for %{name}.
+
 %package        devel
 Summary:        Files for %{name} development
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}-libs = %{version}-%{release}
+
 %description    devel
 files for %{name} development.
 
@@ -52,12 +58,14 @@ popd
 %check
 make test
 
-%ldconfig_scriptlets
+%ldconfig_scriptlets libs
 
 %files
 %defattr(-,root,root)
 %license COPYING
 %{_bindir}/*
+
+%files libs
 %{_libdir}/*.so.*
 
 %files devel
@@ -71,7 +79,13 @@ make test
 %{_mandir}/man1/*
 
 %changelog
-* Thu Sep 5 2019 openEuler Builteam <buildteam@openeuler.org> -2.1-16
+* Mon Feb 17 2020 hexiujun <hexiujun1@huawei.com> - 2.1-17
+- Type:enhancement
+- ID:NA
+- SUG:NA
+- DESC:unpack libs subpackage
+
+* Thu Sep 5 2019 openEuler Builteam <buildteam@openeuler.org> - 2.1-16
 - Type:enhancement
 - ID:NA
 - SUG:NA
