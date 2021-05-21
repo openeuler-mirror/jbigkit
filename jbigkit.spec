@@ -1,6 +1,6 @@
 Name:           jbigkit
 Version:        2.1
-Release:        17
+Release:        19
 Summary:        Lossless image compression library
 
 License:        GPLv2+
@@ -11,8 +11,9 @@ Source0:        https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/%{name}-%{versi
 Patch0:         jbigkit-2.1-shlib.patch
 Patch1:         jbigkit-2.0-warnings.patch
 Patch2:         jbigkit-ldflags.patch
+Patch6000:      backport-CVE-2017-9937.patch
 
-BuildRequires:  gcc
+BuildRequires:  gcc vim
 Requires:       %{name}-libs = %{version}-%{release}
 
 %description
@@ -41,6 +42,9 @@ files for %{name} development.
 %autosetup -n %{name}-%{version} -p1
 
 %build
+export CFLAGS="${CFLAGS:-%optflags}" 
+export CXXFLAGS="${CXXFLAGS:-%optflags}" 
+export FFLAGS="${FFLAGS:-%optflags}"
 %make_build
 
 %install
@@ -79,6 +83,12 @@ make test
 %{_mandir}/man1/*
 
 %changelog
+* Tue Feb 9 2021 jinzhimin <jinzhimin2@huawei.com> - 2.1-19
+- fix CVE-2017-9937
+
+* Tue Feb 9 2021 jinzhimin <jinzhimin2@huawei.com> - 2.1-18
+- add CFLAGS in build
+
 * Mon Feb 17 2020 hexiujun <hexiujun1@huawei.com> - 2.1-17
 - Type:enhancement
 - ID:NA
