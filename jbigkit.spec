@@ -1,6 +1,6 @@
 Name:           jbigkit
 Version:        2.1
-Release:        17
+Release:        18
 Summary:        Lossless image compression library
 
 License:        GPLv2+
@@ -11,6 +11,8 @@ Source0:        https://www.cl.cam.ac.uk/~mgk25/jbigkit/download/%{name}-%{versi
 Patch0:         jbigkit-2.1-shlib.patch
 Patch1:         jbigkit-2.0-warnings.patch
 Patch2:         jbigkit-ldflags.patch
+
+Patch6000:      backport-CVE-2017-9937.patch
 
 BuildRequires:  gcc
 Requires:       %{name}-libs = %{version}-%{release}
@@ -79,6 +81,12 @@ make test
 %{_mandir}/man1/*
 
 %changelog
+* Mon Apr 11 2022 xingxing <xingxing9@h-partners.com> - 2.1-18
+- Type:CVE
+- CVE:CVE-2017-9937
+- SUG:NA
+- DESC:fix CVE-2017-9937
+
 * Mon Feb 17 2020 hexiujun <hexiujun1@huawei.com> - 2.1-17
 - Type:enhancement
 - ID:NA
