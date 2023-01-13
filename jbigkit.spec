@@ -1,6 +1,6 @@
 Name:           jbigkit
 Version:        2.1
-Release:        20
+Release:        21
 Summary:        Lossless image compression library
 
 License:        GPLv2+
@@ -46,7 +46,7 @@ files for %{name} development.
 export CFLAGS="${CFLAGS:-%optflags}"
 export CXXFLAGS="${CXXFLAGS:-%optflags}"
 export FFLAGS="${FFLAGS:-%optflags}"
-%make_build
+make
 
 %install
 pushd libjbig
@@ -84,6 +84,9 @@ make test
 %{_mandir}/man1/*
 
 %changelog
+* Fri Jan 13 2023 zhouwenpei <zhouwenpei1@h-partners.com> - 2.1-21
+- fix build fail
+
 * Tue Oct 25 2022 wangkerong <wangkerong@h-partners.com> - 2.1-20
 - rebuild for next release
 
