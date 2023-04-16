@@ -1,0 +1,36 @@
+diff -up jbigkit-2.1/libjbig/Makefile.orig2 jbigkit-2.1/libjbig/Makefile
+--- jbigkit-2.1/libjbig/Makefile.orig2	2023-04-16 16:44:13.690431844 +0800
++++ jbigkit-2.1/libjbig/Makefile	2023-04-16 16:44:42.118544267 +0800
+@@ -1,7 +1,7 @@
+ # Unix makefile for the JBIG-KIT library
+ 
+ # Select an ANSI/ISO C compiler here, GNU gcc is recommended
+-CC = gcc
++CC ?= gcc
+ 
+ # Options for the compiler: A high optimization level is suggested
+ CFLAGS = $(RPM_OPT_FLAGS) -W -Wall -ansi -pedantic # --coverage
+diff -up jbigkit-2.1/Makefile.orig2 jbigkit-2.1/Makefile
+--- jbigkit-2.1/Makefile.orig2	2023-04-16 16:43:38.182291412 +0800
++++ jbigkit-2.1/Makefile	2023-04-16 16:45:00.230615896 +0800
+@@ -1,7 +1,7 @@
+ # Unix makefile for JBIG-KIT
+ 
+ # Select an ANSI/ISO C compiler here, GNU gcc is recommended
+-CC = gcc
++CC ?= gcc
+ 
+ # Options for the compiler: A high optimization level is suggested
+ CFLAGS = $(RPM_OPT_FLAGS) -W -Wno-unused-result
+diff -up jbigkit-2.1/pbmtools/Makefile.orig2 jbigkit-2.1/pbmtools/Makefile
+--- jbigkit-2.1/pbmtools/Makefile.orig2	2023-04-16 16:44:32.126504750 +0800
++++ jbigkit-2.1/pbmtools/Makefile	2023-04-16 16:44:48.254568533 +0800
+@@ -1,7 +1,7 @@
+ # Unix makefile for the JBIG-KIT PBM tools
+ 
+ # Select an ANSI/ISO C compiler here, e.g. GNU gcc is recommended
+-CC = gcc
++CC ?= gcc
+ 
+ # Options for the compiler
+ CFLAGS = $(RPM_OPT_FLAGS) -W -Wall -Wno-unused-result -ansi -pedantic # --coverage
