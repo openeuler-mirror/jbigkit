@@ -1,6 +1,6 @@
 Name:           jbigkit
 Version:        2.1
-Release:        21
+Release:        22
 Summary:        Lossless image compression library
 
 License:        GPLv2+
@@ -13,6 +13,7 @@ Patch1:         jbigkit-2.0-warnings.patch
 Patch2:         jbigkit-ldflags.patch
 
 Patch6000:      backport-CVE-2017-9937.patch
+Patch6001:      support-specify-cc.patch
 
 BuildRequires:  gcc
 Requires:       %{name}-libs = %{version}-%{release}
@@ -84,6 +85,9 @@ make test
 %{_mandir}/man1/*
 
 %changelog
+* Sun Apr 16 2023 jammyjellyfish <jammyjellyfish255@outlook.com> - 2.1-22
+- Support specify CC
+
 * Fri Jan 13 2023 zhouwenpei <zhouwenpei1@h-partners.com> - 2.1-21
 - fix build fail
 
